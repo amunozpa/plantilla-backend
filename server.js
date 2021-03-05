@@ -12,8 +12,12 @@ app.use(express.urlencoded({extended: false}));
 app.use(router);
 
 router.get('/messages', function(req,res) {
-  console.log(req.query) // datos en la url (params)
-  console.log(req.body) //datos en el body
+  console.log(req.headers);
+  res.header({   //Se pueden mandar cabeceras o header personalizados
+    "custom-header":"Nuestro header"
+  });
+  console.log(req.query); // datos en la url (params)
+  console.log(req.body); //datos en el body
   
   res.send('listado de datos');
 })
