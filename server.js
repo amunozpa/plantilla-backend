@@ -2,6 +2,7 @@
 
 const express = require('express')
 //const bodyParser = require('body-parser'); //body parser se depreco ya que al parecer esta incluido en express
+const response = require('./network/response') //utiliza la plantilla para respuesta uniforme
 
 //con router podemos separar rutas usando los verbos permitidos en peticiones http
 const router = express.Router();
@@ -19,14 +20,17 @@ router.get('/messages', function(req,res) {
   console.log(req.query); // datos en la url (params)
   console.log(req.body); //datos en el body
   
-  res.send('listado de datos');
+  response.success(req,res, "listado de datos", 200)
 })
 
 router.post('/messages', function(req,res) {
   console.log(req.query) // datos en la url (params)
-  console.log(req.body) //datos en el body
-  //res.status(201).send(); //esto manda algo al cliente en este caso un dato del request
-  res.status(201).send({error:'',body:'creado correctamente'}); //respuesta estructurada que devuelve objetoso o array (cualquier cosa)
+  if(req.query.error == "ok"){
+    response.error(req,res,"Error simulado en endpoint http://localhost:3000/messages?error=ok para post")
+  }else {
+    response.success(req,res, "Creado correctamente", 201)
+  }
+
 })
 
 // router.post('/messages', function(req,res) {
