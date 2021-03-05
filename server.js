@@ -22,15 +22,16 @@ router.get('/messages', function(req,res) {
   res.send('listado de datos');
 })
 
-router.delete('/messages', function(req,res) {
+router.post('/messages', function(req,res) {
   console.log(req.query) // datos en la url (params)
   console.log(req.body) //datos en el body
-  res.send('Mensaje request ' + req.body.saludo+ ' '+ req.query.order); //esto manda algo al cliente en este caso un dato del request
+  //res.status(201).send(); //esto manda algo al cliente en este caso un dato del request
+  res.status(201).send({error:'',body:'creado correctamente'}); //respuesta estructurada que devuelve objetoso o array (cualquier cosa)
 })
 
-router.post('/messages', function(req,res) {
-  res.send('se ingreso el nuevo dato');
-})
+// router.post('/messages', function(req,res) {
+//   res.send('se ingreso el nuevo dato');
+// })
 
 // app.use('/', function (req, res) {
 //   res.send("hola")
