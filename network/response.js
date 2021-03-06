@@ -9,7 +9,7 @@ exports.success = (req,res,message,status) => {
 }
 
 exports.error = (req,res,message,status, details) => {
-    console.log(chalk.redBright('[response errors]: ' +  details))
+    console.log(chalk.redBright('[response_errors]: ' +  details))
 
     res.status(status || 500).send({
         error: message,
