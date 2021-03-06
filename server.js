@@ -20,22 +20,22 @@ router.get('/messages', function(req,res) {
   console.log(req.query); // datos en la url (params)
   console.log(req.body); //datos en el body
   
-  response.success(req,res, "listado de datos", 200)
+  response.success(req,res, "listado de datos", 200);
 })
 
 router.post('/messages', function(req,res) {
   console.log(req.query) // datos en la url (params)
   if(req.query.error == "ok"){
-    response.error(req,res,"Error simulado en endpoint http://localhost:3000/messages?error=ok para post")
+    response.error(req,res,"Error simulado en endpoint http://localhost:3000/messages?error=ok para post",500,"error que no debe ver el cliente"); //los errores deben manejarse para limitar informacion al cliente por seguridad
   }else {
-    response.success(req,res, "Creado correctamente", 201)
+    response.success(req,res, "Creado correctamente", 201);
   }
 
 })
 
 app.use('/app', express.static('public')); //agregara archivos estaticos que esten en la carpeta public, el front puede estar aqui
 
-app.listen(3000)
+app.listen(3000);
 
 console.log("el puerto a escuchar es http://localhost:3000");
 
