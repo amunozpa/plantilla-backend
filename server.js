@@ -33,14 +33,8 @@ router.post('/messages', function(req,res) {
 
 })
 
-// router.post('/messages', function(req,res) {
-//   res.send('se ingreso el nuevo dato');
-// })
+app.use('/app', express.static('public')); //agregara archivos estaticos que esten en la carpeta public, el front puede estar aqui
 
-// app.use('/', function (req, res) {
-//   res.send("hola")
-// })
- 
 app.listen(3000)
 
 console.log("el puerto a escuchar es http://localhost:3000");
