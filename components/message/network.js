@@ -6,20 +6,19 @@ const response = require('../../network/response'); //utiliza la plantilla para 
 
 
 router.get('/', function(req,res) {
-    console.log(req.headers);
-    res.header({   //Se pueden mandar cabeceras o header personalizados
-      "custom-header":"Nuestro header"
-    });
-    console.log(req.query); // datos en la url (params)
-    console.log(req.body); //datos en el body
-    
-    response.success(req,res, "listado de datos", 200);
+  controller.getMessages()
+    .then((messageList) => { //esta variable "messageList" tiene un nombre que le pongamos pero devuelve el resultado de la promesa
+      response.success(req,res, messageList, 200);
+    })
+    .catch(error => {
+      response.error(req,res,"Unexpected error",500,"Error al traer la información del controlador o la BD")
+    });   
 });
   
 router.post('/', function(req,res) { //opcion con promesas
     //console.log(req.body) // datos en la url (params)
     controller.addMessage(req.body.user,req.body.message)
-      .then((fullMessage) => {
+      .then((fullMessage) => { //esta variable "fullmessage" tiene un nombre que le pongamos pero devuelve el resultado de la promesa
         response.success(req,res, fullMessage, 201)
       })
       .catch((error) => {
