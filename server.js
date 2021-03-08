@@ -14,6 +14,6 @@ app.use('/app', express.static('public')); //agregar archivos estaticos que este
 
 app.listen(3000);
 
-console.log("el puerto a escuchar es http://localhost:3000");
+console.log("se creo el server http, puerto 3000");
 
 

@@ -1,5 +1,5 @@
 const db = require('mongoose');
-const Model = require('./model');
+const Model = require('../components/message/model');
 
 const uri = 'mongodb+srv://db_user_kravenkov:mongodb@cluster0.9fafp.mongodb.net/test?retryWrites=true&w=majority' //se pone user:pwd... net./nombreBD
 

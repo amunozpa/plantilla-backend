@@ -3,14 +3,11 @@
 
 const chalk = require("chalk");
 // const store = require('./store');
-const storeMysql = require('./mysql');
+const storeMysql = require('../../store/mysql');
 const TABLE = 'messages';
 
 function addMessage (id, user, message) {
     return new Promise ((resolve,reject) => {
-        console.log(id);
-        console.log(user);
-        console.log(message);
         if(!id || !user || !message) {
             console.error (chalk.yellow('[message_controller] falta ingresar algun dato'))
             reject('datos incorrectos');

@@ -2,7 +2,7 @@
 //se modifica la informacion, se añaden datos como fecha
 
 const chalk = require("chalk");
-const store = require('./store');
+const store = require('../../store/mongodb');
 
 function addMessage (user, message) {
     return new Promise ((resolve,reject) => {
